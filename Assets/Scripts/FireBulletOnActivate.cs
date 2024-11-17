@@ -11,16 +11,14 @@ namespace MyVrSample
     {
         #region Variables
         public GameObject bulletPrefab;
-
         public Transform firePoint;
-
         public float bulletSpeed = 20f;
         #endregion
 
-        public void Start()
+        private void Start()
         {
-            XRGrabInteractable xRGrabInteractable = GetComponent<XRGrabInteractable>();
-            xRGrabInteractable.activated.AddListener(Fire);
+            XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
+            grabInteractable.activated.AddListener(Fire);
         }
 
         void Fire(ActivateEventArgs args)
@@ -29,6 +27,5 @@ namespace MyVrSample
             bulletGo.GetComponent<Rigidbody>().linearVelocity = firePoint.forward * bulletSpeed;
             Destroy(bulletGo, 5f);
         }
-
     }
 }
