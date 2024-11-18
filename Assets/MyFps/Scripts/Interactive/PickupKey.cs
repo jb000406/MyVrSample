@@ -7,7 +7,7 @@ namespace MyFps
         #region Variables
         #endregion
 
-        protected override void DoAction()
+        public override void DoAction()
         {
             //key Item 저장
             PlayerStats.Instance.AcquirePuzzleItem(PuzzleKey.ROOM01_KEY);

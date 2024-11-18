@@ -15,7 +15,7 @@ namespace MyFps
         public GameObject ammoUI;
         #endregion
 
-        protected override void DoAction()
+        public override void DoAction()
         {            
             arrow.SetActive(false);
             ammoBox.SetActive(true);

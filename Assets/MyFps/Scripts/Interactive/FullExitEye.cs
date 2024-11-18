@@ -18,7 +18,7 @@ namespace MyFps
         [SerializeField] private string puzzleStr = "You need more Eye Pictures";
         #endregion
 
-        protected override void DoAction()
+        public override void DoAction()
         {
             //퍼즐 조각을 모두 모았느냐?
             if (PlayerStats.Instance.HasPuzzleItem(PuzzleKey.LEFTEYE_KEY)

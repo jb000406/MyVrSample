@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Cinemachine;
 using MyFps;
 
+
 public class CinemachineShake : Singleton<CinemachineShake>
 {
     #region Variables

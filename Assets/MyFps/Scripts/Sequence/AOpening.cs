@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using StarterAssets;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 namespace MyFps
 {
@@ -37,7 +39,7 @@ namespace MyFps
         IEnumerator PlaySequence()
         {
             //0.플레이 캐릭터 비 활성화
-            thePlayer.GetComponent<FirstPersonController>().enabled = false;
+            thePlayer.GetComponentInChildren<DynamicMoveProvider>().enabled = false;
 
             //1.페이드인 연출(4초 대기후 페인드인 효과)            
             fader.FromFade(4f); //5초동안 페이드 효과
@@ -59,7 +61,7 @@ namespace MyFps
             textBox.gameObject.SetActive(false);
 
             //4.플레이 캐릭터 활성화
-            thePlayer.GetComponent<FirstPersonController>().enabled = true;
+            thePlayer.GetComponentInChildren<DynamicMoveProvider>().enabled = true;
         }
 
     }

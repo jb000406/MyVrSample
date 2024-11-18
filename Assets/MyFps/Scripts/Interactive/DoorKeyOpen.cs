@@ -13,7 +13,7 @@ namespace MyFps
         private string sequence = "You need the Key";
         #endregion
 
-        protected override void DoAction()
+        public override void DoAction()
         {
             //문열기
             if (PlayerStats.Instance.HasPuzzleItem(PuzzleKey.ROOM01_KEY))

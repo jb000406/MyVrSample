@@ -24,7 +24,7 @@ namespace MyFps
             m_Collider = GetComponent<Collider>();
         }
 
-        protected override void DoAction()
+        public override void DoAction()
         {
             //1.문여는 애니메이션
             //2.문여는 사운드

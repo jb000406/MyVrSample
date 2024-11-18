@@ -18,7 +18,7 @@ namespace MyFps
             m_Collider = GetComponent<BoxCollider>();
         }
 
-        protected override void DoAction()
+        public override void DoAction()
         {
             animator.SetBool("IsOpen", true);
             m_Collider.enabled = false;

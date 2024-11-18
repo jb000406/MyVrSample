@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MyFps
 {
     //인터렉티브 액션을 구현하는 클래스
     public abstract class Interactive : MonoBehaviour
     {
-        protected abstract void DoAction();
+        public abstract void DoAction();
 
         #region Variables
         private float theDistance;
@@ -17,6 +18,9 @@ namespace MyFps
         [SerializeField] private string action = "Action Text";
         public GameObject extraCross;
 
+        public InputActionProperty leftActivate;    //왼쪽 컨트롤러의 Activate 입력
+        public InputActionProperty rightActivate;   //오른쪽 컨트롤러의 Activate 입력
+
         //true이면 Interactive 기능을 정지
         protected bool unInteractive = false;
         #endregion
@@ -24,7 +28,18 @@ namespace MyFps
         private void Update()
         {
             theDistance = PlayerCasting.distanceFromTarget;
+
+            float leftActivateValue = leftActivate.action.ReadValue<float>();
+            float rightActivateValue = rightActivate.action.ReadValue<float>();
+
+            if(leftActivateValue > 0 || rightActivateValue > 0)
+            {
+                DoAction();
+            }
+
         }
+
+
 
         private void OnMouseOver()
         {
@@ -52,14 +67,14 @@ namespace MyFps
             HideActionUI();
         }
 
-        void ShowActionUI()
+        public void ShowActionUI()
         {
             actionUI.SetActive(true);
             actionText.text = action;
             extraCross.SetActive(true);
         }
 
-        void HideActionUI()
+        public void HideActionUI()
         {
             actionUI.SetActive(false);
             actionText.text = "";
