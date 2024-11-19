@@ -3,15 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.Inputs;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 namespace MyFps
 {
     public class BFirstTrigger : MonoBehaviour
     {
         #region Variables
-        public GameObject thePlayer;
+        public GameObject locomotion;
+
         public GameObject theArrow;
 
         //sequence UI
@@ -31,7 +30,8 @@ namespace MyFps
         IEnumerator PlaySequence()
         {
             //플레이 캐릭터 비활성화(플레이 멈춤)
-            thePlayer.GetComponentInChildren<DynamicMoveProvider>().enabled = false;
+            locomotion.SetActive(false);
+
 
             //대사 출력: "Looks like a weapon on that table.", 음성 출력
             textBox.gameObject.SetActive(true);
@@ -52,7 +52,7 @@ namespace MyFps
             textBox.gameObject.SetActive(false);
 
             //플레이 캐릭터 활성화(다시 플레이)
-            thePlayer.GetComponentInChildren<DynamicMoveProvider>().enabled = true;
+            locomotion.SetActive(true);
 
             //트리거 충돌체 비활성화 - 킬
             Destroy(gameObject);

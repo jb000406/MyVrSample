@@ -11,7 +11,7 @@ namespace MyFps
         public GameObject exitWall;
         #endregion
 
-        public override void DoAction()
+        protected override void DoAction()
         {
             StartCoroutine(GainPuzzleItem());
 

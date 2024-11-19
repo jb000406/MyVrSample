@@ -22,7 +22,7 @@ namespace MyFps
         [SerializeField] private string puzzleStr = "Puzzle Text";  //아이템 획득 안내 텍스트
         #endregion
 
-        public override void DoAction()
+        protected override void DoAction()
         {
             StartCoroutine(GainPuzzleItem());
         }

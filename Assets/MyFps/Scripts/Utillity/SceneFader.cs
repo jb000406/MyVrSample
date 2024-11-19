@@ -69,7 +69,7 @@ namespace MyFps
             }
 
             //다음씬 로드
-            //SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneName);
         }
 
         IEnumerator FadeOut(int sceneNumber)

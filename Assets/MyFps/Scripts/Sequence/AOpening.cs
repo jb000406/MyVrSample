@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using StarterAssets;
-using UnityEngine.XR.Interaction.Toolkit.Inputs;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 namespace MyFps
 {
     public class AOpening : MonoBehaviour
     {
         #region Variables
-        public GameObject thePlayer;
+        public GameObject locomotion;
+
+        //public GameObject leftController;
+        //public GameObject rightController;
         public SceneFader fader;
 
         //sequence UI
@@ -39,10 +40,13 @@ namespace MyFps
         IEnumerator PlaySequence()
         {
             //0.플레이 캐릭터 비 활성화
-            thePlayer.GetComponentInChildren<DynamicMoveProvider>().enabled = false;
+            //thePlayer.GetComponent<FirstPersonController>().enabled = false;
+            locomotion.SetActive(false);
 
             //1.페이드인 연출(4초 대기후 페인드인 효과)            
-            fader.FromFade(4f); //5초동안 페이드 효과
+            fader.FromFade(4f + 2f); //5초동안 페이드 효과
+
+            yield return new WaitForSeconds(2f);
 
             //2.화면 하단에 시나리오 텍스트 화면 출력(3초), 음성 출력
             //(...Where am I?)
@@ -61,7 +65,8 @@ namespace MyFps
             textBox.gameObject.SetActive(false);
 
             //4.플레이 캐릭터 활성화
-            thePlayer.GetComponentInChildren<DynamicMoveProvider>().enabled = true;
+            //thePlayer.GetComponent<FirstPersonController>().enabled = true;
+            locomotion.SetActive(true);
         }
 
     }

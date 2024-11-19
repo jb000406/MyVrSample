@@ -10,7 +10,7 @@ namespace MyFps
         [SerializeField] private int giveAmmo = 7;
         #endregion
 
-        public override void DoAction()
+        protected override void DoAction()
         {
             //아이템 지급
             Debug.Log("탄환 7개를 지급 했습니다");
