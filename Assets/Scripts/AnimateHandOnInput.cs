@@ -33,5 +33,10 @@ namespace MyVrSample
             handAnimator.SetFloat("Trigger", triggerValue);
             handAnimator.SetFloat("Grip", gripValue);
         }
+
+        /*void ThrowEveryThing()
+        {
+            if()
+        }*/
     }
 }

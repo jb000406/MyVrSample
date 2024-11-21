@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MyFps
 {
-    public class BFirstTrigger : MonoBehaviour
+    public class BFirstTrigger : WorldMenu
     {
         #region Variables
         public GameObject locomotion;
@@ -14,7 +14,6 @@ namespace MyFps
         public GameObject theArrow;
 
         //sequence UI
-        public TextMeshProUGUI textBox;
         [SerializeField]
         private string sequence = "Looks like a weapon on that table";
 

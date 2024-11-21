@@ -6,7 +6,7 @@ using StarterAssets;
 
 namespace MyFps
 {
-    public class AOpening : MonoBehaviour
+    public class AOpening : WorldMenu
     {
         #region Variables
         public GameObject locomotion;
@@ -16,7 +16,6 @@ namespace MyFps
         public SceneFader fader;
 
         //sequence UI
-        public TextMeshProUGUI textBox; 
         [SerializeField]
         private string sequence01 = "...Where am I?";
         [SerializeField]
@@ -27,11 +26,9 @@ namespace MyFps
         #endregion
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
-            //마우스 커서 상태 설정
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            base.Start();
 
             StartCoroutine(PlaySequence());
         }
@@ -44,25 +41,25 @@ namespace MyFps
             locomotion.SetActive(false);
 
             //1.페이드인 연출(4초 대기후 페인드인 효과)            
-            fader.FromFade(4f + 2f); //5초동안 페이드 효과
+            fader.FromFade(4f + 5f); //5초동안 페이드 효과
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(5f);
 
             //2.화면 하단에 시나리오 텍스트 화면 출력(3초), 음성 출력
             //(...Where am I?)
-            textBox.gameObject.SetActive(true);
-            textBox.text = sequence01;
+            worldMenuUI.SetActive(true);
+            ShowMenuUI(sequence01);
             line01.Play();
 
             yield return new WaitForSeconds(3f);
             //(I need get out of here)
-            textBox.text = sequence02;
+            ShowMenuUI(sequence02);
             line02.Play();
 
             //3. 3초후에 시나리오 텍스트 없어진다
             yield return new WaitForSeconds(3f);
-            textBox.text = "";
-            textBox.gameObject.SetActive(false);
+            HideMenuUI();
+            worldMenuUI.SetActive(false);
 
             //4.플레이 캐릭터 활성화
             //thePlayer.GetComponent<FirstPersonController>().enabled = true;

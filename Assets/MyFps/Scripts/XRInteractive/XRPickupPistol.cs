@@ -3,7 +3,7 @@ using UnityEngine;
 namespace MyFps
 {
 
-    public class XRPickupPistol : GrabInteractable
+    public class XRPickupPistol : GrabInteractableTwoAttach
     {
         #region Variables
         //Action
@@ -11,7 +11,7 @@ namespace MyFps
 
         public GameObject enemyTrigger;
         public GameObject ammoBox;
-        public GameObject ammoUI;
+        public AmmoUI ammoUI;
         #endregion
 
         protected override void DoAction()
@@ -22,7 +22,9 @@ namespace MyFps
 
             //¹«±âÈ¹µæ
             PlayerStats.Instance.SetHasGun(true);
-            ammoUI.SetActive(true);
+            ammoUI.ShowAmmoUI();
+
+            
         }
 
 
